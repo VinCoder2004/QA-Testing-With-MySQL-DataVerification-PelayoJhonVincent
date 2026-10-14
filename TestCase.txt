@@ -1,0 +1,69 @@
+TEST CASE ID: TC-DataEntry-001
+
+TEST CASE TITLE: Data Entry - Valid
+
+TEST CASE DESCRIPTION:
+Functional Testing of Data Entry page with Backend validation using MySQL queries.
+
+PRECONDITIONS:
+Kara David Birthday Wishnote App is installed locally and MySQL database is pre-populated for comparison. Data entry page is accessed in latest Chrome/Firefox browser.
+
+TEST DATA:
+Five valid entries containing First Name, Last Name, Government Position, and Location within their maximum character limits.
+
+TEST STEPS, EXPECTED RESULTS, AND ACTUAL RESULTS
+
+a. Action: Verify form labels are in the proper order and text boxes are writable.
+Expected Result: Form labels appear in this order: "Target's First Name", "Target's Last Name", "Target's Government Position", and "Target's Location". All text boxes are writable.
+Actual Result: The form fields were available for data entry.
+Status: Passed
+
+b. Action: Verify the "Send Wish Note" button.
+Expected Result: The button changes color on hover and is not disabled.
+Actual Result: Pending verification.
+Status: Pending
+
+c. Action: Enter valid test data into all fields.
+Expected Result: The fields accept valid data entries.
+Actual Result: Five records were submitted using valid field values.
+Status: Passed
+
+d. Action: Click "Send Wish Note".
+Expected Result: A verification modal appears.
+Actual Result: Pending verification.
+Status: Pending
+
+e. Action: Verify the modal contains the same data as entered.
+Expected Result: The modal displays the entered values for all four fields.
+Actual Result: Pending verification.
+Status: Pending
+
+f. Action: Click the Cancel button.
+Expected Result: The modal closes without submitting the record.
+Actual Result: Pending verification.
+Status: Pending
+
+g. Action: Click "Send Wish Note" again, then click "Confirm & Send".
+Expected Result: The confirmed form data is submitted to the backend.
+Actual Result: Five records were saved in the database.
+Status: Passed
+
+h. Action: Verify the successful entry message on the data entry page.
+Expected Result: The message "Success! The wish note has been sent." appears.
+Actual Result: The success message appeared after submission.
+Status: Passed
+
+i. Action: Verify the test data in the database.
+Expected Result: Submitted records appear in the main_corrupt_politicians table.
+Actual Result: All five records appeared in the table. However, Location was NULL for every record even though locations were entered. The SQL INSERT statement omits the Location column and its parameter.
+Database query:
+SELECT * FROM main_corrupt_politicians;
+Status: Failed for the Location field; the records were inserted successfully.
+
+DATABASE VERIFICATION RESULTS:
+
+1. Vincent | Pelayo | Mayor | NULL
+2. Jp | Jardaleza | Mayor | NULL
+3. Kylle | Azue | Mayor | NULL
+4. Jordan | Fabros | Mayor | NULL
+5. Jessie | Calero | Mayor | NULL
